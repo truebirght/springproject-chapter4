@@ -18,7 +18,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@PropertySource("classpath:properties/${spring.profiles.active}.properties")
 public class JdbcConfig {
 	@Value("${jdbc.driverClassName}")
 	private String driverClassName;
@@ -54,7 +53,9 @@ public class JdbcConfig {
 	public DataSource h2DataSource() {
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		return builder.setType(EmbeddedDatabaseType.HSQL) // .H2 or .DERBY
-				.addScript("create-table.sql").addScript("insert-samples.sql").build();
+				//.addScript("create-table.sql")
+				//.addScript("insert-samples.sql")
+				.build();
 	}
 
 	@Bean
